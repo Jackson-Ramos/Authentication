@@ -18,8 +18,12 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	public ProductController(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+	
 	@GetMapping
-	public ResponseEntity list() {
+	public ResponseEntity<List<ProductResponseDTO>> list() {
 		return ResponseEntity.ok(
 				productRepository.findAll()
 						.stream()

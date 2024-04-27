@@ -4,11 +4,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/auth
     username: postgres
     password: root
-
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
       hibernate:
-        ddl-auto: update
-        properties:
-          hibernate:
-            dialect: org.hibernate.dialect.PostgreSQL81Dialect
-          show-sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: false
+

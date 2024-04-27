@@ -17,7 +17,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
 	private String name;
-	private BigDecimal price;
+	private Double price;
 	
 	public Product(ProductRequestDTO productRequestDTO) {
 		this.name = productRequestDTO.getName();
