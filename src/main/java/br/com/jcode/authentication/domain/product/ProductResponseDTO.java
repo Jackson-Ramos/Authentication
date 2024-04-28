@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class ProductResponseDTO {
 	private String id;
 	private String name;
-	private Double price;
+	private Integer price;
 	
 	public ProductResponseDTO(Product product) {
 		this.id = product.getId();

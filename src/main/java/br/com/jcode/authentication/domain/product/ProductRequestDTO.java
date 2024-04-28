@@ -11,5 +11,5 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class ProductRequestDTO {
 	private String name;
-	private Double price;
+	private Integer price;
 }
