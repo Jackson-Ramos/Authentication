@@ -27,13 +27,16 @@ public class ProductController {
 		return ResponseEntity.ok(
 				productRepository.findAll()
 						.stream()
-						.map(ProductResponseDTO::new).toList()
+						.map(ProductResponseDTO::new)
+						.toList()
 		);
 	}
 	
 	@PostMapping()
 	public ResponseEntity create(@RequestBody ProductRequestDTO productRequestDTO) {
-		Product product = productRepository.save(new Product(productRequestDTO));
+		Product product = productRepository.save(
+				new Product(productRequestDTO)
+		);
 		return ResponseEntity.ok(product);
 	}
 }
