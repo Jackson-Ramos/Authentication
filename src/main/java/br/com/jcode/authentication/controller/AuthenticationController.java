@@ -1,6 +1,8 @@
 package br.com.jcode.authentication.controller;
 
+import br.com.jcode.authentication.config.security.TokenService;
 import br.com.jcode.authentication.domain.user.AuthenticationDTO;
+import br.com.jcode.authentication.domain.user.LoginResponseDTO;
 import br.com.jcode.authentication.domain.user.RegisterDTO;
 import br.com.jcode.authentication.domain.user.User;
 import br.com.jcode.authentication.repositories.UserRepository;
@@ -21,20 +23,25 @@ public class AuthenticationController {
 	
 	@Autowired
 	private final AuthenticationManager authenticationManager;
-	
 	@Autowired
 	private final UserRepository userRepository;
+	@Autowired
+	private final TokenService tokenService;
 	
-	public AuthenticationController(AuthenticationManager authenticationManager, UserRepository userRepository) {
+	public AuthenticationController(AuthenticationManager authenticationManager, UserRepository userRepository, TokenService tokenService) {
 		this.authenticationManager = authenticationManager;
 		this.userRepository = userRepository;
+		this.tokenService = tokenService;
 	}
 	
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
 		var usernamePassword = new UsernamePasswordAuthenticationToken(data.getLogin(), data.getPassword());
 		var auth = this.authenticationManager.authenticate(usernamePassword);
-		return ResponseEntity.ok().build();
+		
+		var token = tokenService.generateToken((User) auth.getPrincipal());
+		
+		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
 	
 	@PostMapping("/register")
