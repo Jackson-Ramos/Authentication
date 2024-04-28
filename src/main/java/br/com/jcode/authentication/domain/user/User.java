@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "uaers")
+@Table(name = "users")
 public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -26,6 +26,12 @@ public class User implements UserDetails, Serializable {
 	private String login;
 	private String password;
 	private UserRole role;
+	
+	public User(String login, String password, UserRole role) {
+		this.login = login;
+		this.password = password;
+		this.role = role;
+	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
