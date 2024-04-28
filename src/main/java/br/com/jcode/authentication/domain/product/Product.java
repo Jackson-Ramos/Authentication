@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
@@ -12,7 +13,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Entity()
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
