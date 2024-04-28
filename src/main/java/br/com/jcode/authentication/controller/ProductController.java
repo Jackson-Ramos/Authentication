@@ -6,7 +6,6 @@ import br.com.jcode.authentication.domain.product.ProductResponseDTO;
 import br.com.jcode.authentication.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
