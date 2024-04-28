@@ -16,9 +16,9 @@ import java.util.List;
 public class ProductController {
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private final ProductRepository productRepository;
 	
-	public ProductController(ProductRepository productRepository) {
+	public ProductController(final ProductRepository productRepository) {
 		this.productRepository = productRepository;
 	}
 	
